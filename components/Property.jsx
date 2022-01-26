@@ -8,7 +8,9 @@ import millify from 'millify';
 
 const Property = ({property: { address, photo, price, beds, baths, prop_status, property_id}}) => (
     <Link href={`/property/${property_id}`} passhref >
-        {address}
+        <Flex flexwrap>
+
+        </Flex>
     </Link>
 )
 

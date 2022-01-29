@@ -49,16 +49,18 @@ export default function Home({propertiesForSale, propertiesForRent}) {
         linkName="/search?purpose=for-rent"
         imageUrl="https://ap.rdcpix.com/c81265ffee49528f4e0e1a454e9c4748l-m504515002xd-w640_h480_q80.jpg"
       />
-
-          {propertiesForRent.listings.map((property) => <Property property={property} key={property.id} />)}
+      
+          <Flex flexWrap="wrap">
+            {propertiesForRent.listings.map((property) => <Property property={property} key={property.id} />)}
+          </Flex>
           
     </Box>
   )
 }
 
 export async function getStaticProps() {
-  const propertyForSale = await fetchApi(`${baseUrl}/properties/list-for-sale?city=Corinth&state_code=TX&purpose=for-sale`)
-  const propertyForRent = await fetchApi(`${baseUrl}/properties/list-for-rent?city=Corinth&state_code=TX&purpose=for-rent`)
+  const propertyForSale = await fetchApi(`${baseUrl}/properties/list-for-sale?state_code=TX&purpose=for-sale&limit=6`)
+  const propertyForRent = await fetchApi(`${baseUrl}/properties/list-for-rent?&state_code=TX&purpose=for-rent &limit=6 `)
 
   return {
     props: {
